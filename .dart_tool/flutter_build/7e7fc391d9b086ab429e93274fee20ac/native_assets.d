@@ -1,0 +1,1 @@
+ C:\\Users\\nolufemi\\Desktop\\connectmart\\.dart_tool\\flutter_build\\7e7fc391d9b086ab429e93274fee20ac\\native_assets.yaml: 
