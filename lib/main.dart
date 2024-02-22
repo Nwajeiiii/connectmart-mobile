@@ -7,7 +7,9 @@ import 'dashboard/dashboard.dart';
 import 'onboarding_screens/onboarding_screen_one.dart';
 import 'onboarding_screens/onboarding_screen_two.dart';
 import 'onboarding_screens/splash_screen.dart';
+import 'providers/product_provider.dart';
 import 'providers/user_provider.dart';
+import 'screens/search_screen.dart';
 import 'signin_screens/account_creation_screen.dart';
 import 'signin_screens/forgot_password_screen.dart';
 import 'signin_screens/signin_screen.dart';
@@ -17,13 +19,13 @@ Future<void> main() async {
   final appDocumentDir = await getApplicationDocumentsDirectory();
   await Hive.initFlutter(appDocumentDir.path);
   await Hive.openBox('userBox');
+  await Hive.openBox('cartBox');
 
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-          create: (_) => UserProvider(),
-        ),
+        ChangeNotifierProvider(create: (_) => UserProvider()),
+        ChangeNotifierProvider(create: (_) => ProductProvider()),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
@@ -40,6 +42,7 @@ Future<void> main() async {
           ForgotPasswordScreen.id: (context) => const ForgotPasswordScreen(),
           AccountCreation.id: (context) => const AccountCreation(),
           Dashboard.id: (context) => const Dashboard(),
+          SearchScreen.id: (context) => SearchScreen(),
           SplashScreen.id: (context) {
             final userBox = Hive.box('userBox');
             if (userBox.containsKey('userId') &&
@@ -58,4 +61,3 @@ Future<void> main() async {
     ),
   );
 }
-
