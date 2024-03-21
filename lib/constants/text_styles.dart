@@ -19,10 +19,16 @@ final kW400SmallGreyFontStyle = GoogleFonts.montserrat(
   fontWeight: FontWeight.w400,
 );
 
-final kW600SmallBlackTextStyle = GoogleFonts.montserrat(
+final kW400SmallBlackFontStyle = GoogleFonts.montserrat(
   color: Colors.black,
   fontSize: 14.0,
   fontWeight: FontWeight.w400,
+);
+
+final kW600SmallBlackTextStyle = GoogleFonts.montserrat(
+  color: Colors.black,
+  fontSize: 14.0,
+  fontWeight: FontWeight.w600,
 );
 
 final kAuthenticationButtonTextStyle = GoogleFonts.montserrat(

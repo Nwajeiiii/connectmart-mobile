@@ -5,6 +5,7 @@ class UserModel {
   final String lastName;
   final String email;
   final String phoneNumber;
+  final String password;
 
   UserModel({
     required this.userId,
@@ -13,6 +14,7 @@ class UserModel {
     required this.lastName,
     required this.email,
     required this.phoneNumber,
+    required this.password,
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
@@ -23,6 +25,7 @@ class UserModel {
       lastName: json['lastName'] ?? 'N/A', // Default value if null
       email: json['email'] ?? 'N/A', // Default value if null
       phoneNumber: json['phoneNumber'] ?? 'N/A', // Default value if null
+      password: json['password'] ?? '', // Assuming you're storing a password
     );
   }
 
@@ -34,6 +37,7 @@ class UserModel {
       'lastName': lastName,
       'email': email,
       'phoneNumber': phoneNumber,
+      'password': password,
     };
   }
 }

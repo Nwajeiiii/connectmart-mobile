@@ -11,8 +11,10 @@ class SearchHandler {
     final provider = Provider.of<ProductProvider>(context, listen: false);
     try {
       await provider.fetchProducts(query);
+      print('success');
       Navigator.pushNamed(context, SearchScreen.id);
     } catch (e) {
+      print(e);
       showDialog(
         context: context,
         builder: (context) => AlertDialog(

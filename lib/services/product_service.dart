@@ -19,4 +19,14 @@ class ProductService {
       throw Exception('Failed to load products');
     }
   }
+
+  Future<Map<String, dynamic>> uploadProduct(Map<String, dynamic> productData) async {
+    final url = Uri.parse('http://10.0.2.2:8080/products/wholesale/add'); // Use 10.0.2.2 for Android emulator to access localhost
+    final response = await http.post(url, body: json.encode(productData), headers: {'Content-Type': 'application/json'});
+    if (response.statusCode == 200) {
+      return json.decode(response.body);
+    } else {
+      throw Exception('Failed to upload product');
+    }
+  }
 }

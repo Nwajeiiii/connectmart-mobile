@@ -1,3 +1,4 @@
+import 'package:connectmart/screens/upload_product_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:path_provider/path_provider.dart';
@@ -9,6 +10,8 @@ import 'onboarding_screens/onboarding_screen_two.dart';
 import 'onboarding_screens/splash_screen.dart';
 import 'providers/product_provider.dart';
 import 'providers/user_provider.dart';
+import 'screens/card_screen.dart';
+import 'screens/edit_profile_screen.dart';
 import 'screens/search_screen.dart';
 import 'signin_screens/account_creation_screen.dart';
 import 'signin_screens/forgot_password_screen.dart';
@@ -20,6 +23,8 @@ Future<void> main() async {
   await Hive.initFlutter(appDocumentDir.path);
   await Hive.openBox('userBox');
   await Hive.openBox('cartBox');
+  await Hive.openBox('businessAddressDetails');
+  await Hive.openBox('cardDetails');
 
   runApp(
     MultiProvider(
@@ -42,7 +47,10 @@ Future<void> main() async {
           ForgotPasswordScreen.id: (context) => const ForgotPasswordScreen(),
           AccountCreation.id: (context) => const AccountCreation(),
           Dashboard.id: (context) => const Dashboard(),
+          EditProfileScreen.id: (context) => const EditProfileScreen(),
           SearchScreen.id: (context) => SearchScreen(),
+          CardScreen.id: (context) => const CardScreen(),
+          UploadProductScreen.id: (context) => const UploadProductScreen(),
           SplashScreen.id: (context) {
             final userBox = Hive.box('userBox');
             if (userBox.containsKey('userId') &&

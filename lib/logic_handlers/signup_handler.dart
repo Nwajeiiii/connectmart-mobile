@@ -8,6 +8,7 @@ import '../services/user_service.dart';
 
 class SignUpHandler {
   final BuildContext context;
+
   SignUpHandler(this.context);
 
   void signUp({
@@ -43,20 +44,20 @@ class SignUpHandler {
           lastName: lastName,
           phoneNumber: phoneNumber,
           userType: userType,
-          userId: user.userId, // Use the userId from the API response
+          userId: user.userId,
+          password: password, // Use the userId from the API response
         );
 
         // Save the complete user model instead of the partially returned one
-        Provider.of<UserProvider>(context, listen: false).setUser(completeUserModel);
+        Provider.of<UserProvider>(context, listen: false)
+            .setUser(completeUserModel);
         Navigator.pop(context); // Remove the CircularProgressIndicator
         Navigator.pushNamedAndRemoveUntil(
           context,
           Dashboard.id,
-              (Route<dynamic> route) => false,
+          (Route<dynamic> route) => false,
         );
-
       }
-
     } catch (e) {
       Navigator.pop(context); // Remove the CircularProgressIndicator
       showDialog(

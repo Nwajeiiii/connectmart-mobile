@@ -50,23 +50,36 @@ class CartHandler {
             TextButton(
               child: const Text('OK'),
               onPressed: () async {
-                final cartName = cartNameController.text.trim(); // Trim whitespace
-                if (cartName.isEmpty || cartName.toLowerCase() == 'carts') {
-                  // Show an error message if the cart name is 'carts'
+                final cartName = cartNameController.text.trim();
+                // Check if the cartName is not empty
+                if (cartName.isNotEmpty && cartName.toLowerCase() != 'carts') {
+                  // Pass 'product' as the 'firstProduct' argument
+                  bool result = await cartService.addNewCart(cartName, product);
+                  if (result) {
+                    // Close the new cart dialog
+                    Navigator.of(context).pop();
+                    _showSuccessDialog(context, 'Successfully saved to $cartName');
+                  } else {
+                    // This branch might run if, for example, a cart with the same name already exists
+                    Navigator.of(context).pop(); // Close the new cart dialog
+                    _showFailureDialog(context, 'Failed to save to cart. Cart name might already exist.');
+                  }
+                } else {
+                  // Show an error message if the cart name is empty or invalid
+                  Navigator.of(context).pop(); // Close the dialog first to show the Snackbar properly
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                       content: Text('Invalid cart name. Please choose a different name.'),
                       duration: Duration(seconds: 2),
                     ),
                   );
-                } else if (await cartService.addNewCart(cartName)) {
-                  Navigator.of(context).pop(); // Close the new cart dialog
-                  _showSuccessDialog(context, 'Successfully saved to $cartName');
-                } else {
-                  // This branch might run if, for example, a cart with the same name already exists
-                  Navigator.of(context).pop(); // Close the new cart dialog
-                  _showFailureDialog(context, 'Failed to save to cart');
                 }
+              },
+            ),
+            TextButton(
+              child: const Text('Cancel'),
+              onPressed: () {
+                Navigator.of(context).pop(); // Close the dialog
               },
             ),
           ],
