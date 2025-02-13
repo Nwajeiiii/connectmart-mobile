@@ -1,3 +1,4 @@
+import 'package:connectmart/dashboard/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../constants/screen_margins.dart';
@@ -54,6 +55,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                         return ListTile(
                           leading: const Icon(Icons.credit_card),
                           title: Text(card.cardHolderName),
+                          onTap: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Dashboard())),
                           onLongPress: () async {
                             await _cardDetailsService.deleteCardDetail(index);
                             // Refresh the UI by calling setState

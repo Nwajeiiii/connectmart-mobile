@@ -49,6 +49,7 @@
 // }
 
 import 'package:flutter/material.dart';
+import 'package:flutter_animator/flutter_animator.dart';
 import 'package:flutter_animator/widgets/animator_widget.dart';
 import 'package:hive_flutter/adapters.dart';
 
@@ -93,22 +94,26 @@ class CartScreen extends StatelessWidget {
                 itemBuilder: (context, index) {
                   final cartName = filteredKeys[index];
                   return ListTile(
-                    title: Text(cartName),
+                    title: BounceInLeft(
+                      child: Text(cartName),
+                    ),
                     onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) =>
-                              CartProductsScreen(cartName: cartName),
-                        )),
-                    trailing: IconButton(
-                      icon: const Icon(Icons.delete),
-                      onPressed: () {
-                        final cartsList = box
-                            .get('carts', defaultValue: <String>[])
-                          ..remove(cartName);
-                        box.put('carts', cartsList);
-                        box.delete(cartName);
-                      },
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => CartProductsScreen(cartName: cartName),
+                      ),
+                    ),
+                    trailing: BounceInRight(
+                      child: IconButton(
+                        icon: const Icon(Icons.delete),
+                        onPressed: () {
+                          final cartsList = box
+                              .get('carts', defaultValue: <String>[])
+                            ..remove(cartName);
+                          box.put('carts', cartsList);
+                          box.delete(cartName);
+                        },
+                      ),
                     ),
                   );
                 },
@@ -120,4 +125,3 @@ class CartScreen extends StatelessWidget {
     );
   }
 }
-

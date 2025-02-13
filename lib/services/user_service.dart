@@ -13,7 +13,7 @@ class UserService {
     required String userType,
   }) async {
     final response = await http.post(
-      Uri.parse('http://10.0.2.2:8080/users/register'),
+      Uri.parse('https://connectmart-backend.onrender.com/users/register'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -47,7 +47,7 @@ class UserService {
     required String password,
   }) async {
     final response = await http.post(
-      Uri.parse('http://10.0.2.2:8080/users/login'),
+      Uri.parse('https://connectmart-backend.onrender.com/users/login'),
       // Use the actual IP for localhost
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',

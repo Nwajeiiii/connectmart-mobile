@@ -124,19 +124,19 @@ class _SigninScreenState extends State<SigninScreen> {
                   ),
                 ),
                 const SizedBox(height: 10.0),
-                InkWell(
-                  onTap: () => Navigator.pushNamed(
-                    context,
-                    ForgotPasswordScreen.id,
-                  ),
-                  child: ZoomInLeft(
-                    key: _basicAnimation8,
-                    child: Text(
-                      'Forgot Password?',
-                      style: kNormalSmallRedStyle,
-                    ),
-                  ),
-                ),
+                // InkWell(
+                //   onTap: () => Navigator.pushNamed(
+                //     context,
+                //     ForgotPasswordScreen.id,
+                //   ),
+                //   child: ZoomInLeft(
+                //     key: _basicAnimation8,
+                //     child: Text(
+                //       'Forgot Password?',
+                //       style: kNormalSmallRedStyle,
+                //     ),
+                //   ),
+                // ),
                 const SizedBox(height: 30.0),
                 ZoomInLeft(
                   key: _basicAnimation9,

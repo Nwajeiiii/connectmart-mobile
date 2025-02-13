@@ -27,15 +27,15 @@ class SharedHeader extends StatelessWidget {
     return Column(
       children: [
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            IconButton(
-              icon: BounceInDown(
-                key: basicAnimation1,
-                child: const Icon(Icons.menu, color: Colors.black),
-              ),
-              onPressed: () => onMenuPressed(),
-            ),
+            // IconButton(
+            //   icon: BounceInDown(
+            //     key: basicAnimation1,
+            //     child: const Icon(Icons.menu, color: Colors.black),
+            //   ),
+            //   onPressed: () => onMenuPressed(),
+            // ),
             BounceInDown(
               key: basicAnimation2,
               child: Text(
@@ -47,16 +47,16 @@ class SharedHeader extends StatelessWidget {
                 ),
               ),
             ),
-            IconButton(
-              style: const ButtonStyle(
-                backgroundColor: MaterialStatePropertyAll(Color(0xfff9afb7)),
-              ),
-              onPressed: () {},
-              icon: BounceInDown(
-                key: basicAnimation3,
-                child: const Icon(Icons.notifications, color: Colors.white),
-              ),
-            ),
+            // IconButton(
+            //   style: const ButtonStyle(
+            //     backgroundColor: MaterialStatePropertyAll(Color(0xfff9afb7)),
+            //   ),
+            //   onPressed: () {},
+            //   icon: BounceInDown(
+            //     key: basicAnimation3,
+            //     child: const Icon(Icons.notifications, color: Colors.white),
+            //   ),
+            // ),
           ],
         ),
         const SizedBox(height: 20.0),
